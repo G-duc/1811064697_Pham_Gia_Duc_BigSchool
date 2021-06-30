@@ -26,3 +26,4 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Models
         public string Name { get; set; }
     }
 }
+//
