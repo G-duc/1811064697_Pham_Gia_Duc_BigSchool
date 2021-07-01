@@ -9,7 +9,9 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Models
     public class Course
     {
         public int Id { get; set; }
-        public ApplicationUser Lecture { get; set; }
+        public ApplicationUser Lecturer { get; set; }
+        [Required]
+        public string LecturerId { get; internal set; }
         [Required]
         [StringLength(255)]
         public string Place { get; set; }
@@ -17,13 +19,8 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Models
         public Category Category { get; set; }
         [Required]
         public byte CategoryId { get; set; }
+        
     }
-    public class Category
-    {
-        public byte Id { get; set; }
-        [Required]
-        [StringLength(255)]
-        public string Name { get; set; }
-    }
+  
 }
-//
+ 
