@@ -174,10 +174,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106300821208_KhoiTaoModelKetNoiDB.cs" />
-    <Compile Include="Migrations\202106300821208_KhoiTaoModelKetNoiDB.Designer.cs">
-      <DependentUpon>202106300821208_KhoiTaoModelKetNoiDB.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202106301252099_CreateTableCourse.cs" />
     <Compile Include="Migrations\202106301252099_CreateTableCourse.Designer.cs">
       <DependentUpon>202106301252099_CreateTableCourse.cs</DependentUpon>
@@ -185,6 +181,10 @@
     <Compile Include="Migrations\202106301302258_PopulateCategoryTable.cs" />
     <Compile Include="Migrations\202106301302258_PopulateCategoryTable.Designer.cs">
       <DependentUpon>202106301302258_PopulateCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107020223057_InitialModel.cs" />
+    <Compile Include="Migrations\202107020223057_InitialModel.Designer.cs">
+      <DependentUpon>202107020223057_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -196,6 +196,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
+    <Compile Include="ViewModels\FutureDate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -272,14 +273,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106300821208_KhoiTaoModelKetNoiDB.resx">
-      <DependentUpon>202106300821208_KhoiTaoModelKetNoiDB.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106301252099_CreateTableCourse.resx">
       <DependentUpon>202106301252099_CreateTableCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106301302258_PopulateCategoryTable.resx">
       <DependentUpon>202106301302258_PopulateCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107020223057_InitialModel.resx">
+      <DependentUpon>202107020223057_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

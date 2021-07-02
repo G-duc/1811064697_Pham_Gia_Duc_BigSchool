@@ -7,13 +7,13 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class KhoiTaoModelKetNoiDB : IMigrationMetadata
+    public sealed partial class InitialModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(KhoiTaoModelKetNoiDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106300821208_KhoiTaoModelKetNoiDB"; }
+            get { return "202107020223057_InitialModel"; }
         }
         
         string IMigrationMetadata.Source
