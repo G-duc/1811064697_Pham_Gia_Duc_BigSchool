@@ -26,10 +26,11 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Controllers
             };
             return View(viewModel);
         }
+        
         [HttpPost]
         public ActionResult Create(CourseViewModel viewModel)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 viewModel.Categories = _dbContext.Categories.ToList();
                 return View("Create", viewModel);
@@ -43,8 +44,8 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Controllers
             };
             _dbContext.Courses.Add(course);
             _dbContext.SaveChanges();
-
             return RedirectToAction("Index", "Home");
         }
+
     }
 }

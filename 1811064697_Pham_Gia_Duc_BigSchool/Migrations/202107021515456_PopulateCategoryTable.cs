@@ -7,9 +7,9 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Migrations
     {
         public override void Up()
         {
-            Sql("INSERT INTO CATEGORIES (ID, NAME) VALUES (1, 'Development')");
-            Sql("INSERT INTO CATEGORIES (ID, NAME) VALUES (2, 'Business')");
-            Sql("INSERT INTO CATEGORIES (ID, NAME) VALUES (3, 'Marketing')");
+            Sql("INSERT INTO CATEGORIES (ID,NAME) VALUES (1, 'Development')");
+            Sql("INSERT INTO CATEGORIES (ID,NAME) VALUES (2, 'Business')");
+            Sql("INSERT INTO CATEGORIES (ID,NAME) VALUES (3, 'Marketing')");
         }
         
         public override void Down()

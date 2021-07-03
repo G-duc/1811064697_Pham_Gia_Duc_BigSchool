@@ -8,13 +8,17 @@ using System.Web;
 namespace _1811064697_Pham_Gia_Duc_BigSchool.ViewModels
 {
     public class CourseViewModel
-    {
+    {   
         [Required]
         public string Place { get; set; }
+
         [Required]
+        [FutureDate]
         public string Date { get; set; }
+
         [Required]
         public string Time { get; set; }
+
         [Required]
         public byte Category { get; set; }
         public IEnumerable<Category> Categories { get; set; }
@@ -22,6 +26,7 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.ViewModels
         public DateTime GetDateTime()
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
-        }    
+        }
+        
     }
 }

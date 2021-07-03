@@ -13,7 +13,7 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202106301302258_PopulateCategoryTable"; }
+            get { return "202107021515456_PopulateCategoryTable"; }
         }
         
         string IMigrationMetadata.Source
