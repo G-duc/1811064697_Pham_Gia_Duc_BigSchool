@@ -17,6 +17,7 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.ViewModels
         public string Date { get; set; }
 
         [Required]
+        [ValidTime]
         public string Time { get; set; }
 
         [Required]
