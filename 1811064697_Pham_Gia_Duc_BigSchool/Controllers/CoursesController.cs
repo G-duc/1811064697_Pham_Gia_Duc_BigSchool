@@ -28,6 +28,7 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Controllers
         }
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel viewModel)
         {
             if (!ModelState.IsValid)
