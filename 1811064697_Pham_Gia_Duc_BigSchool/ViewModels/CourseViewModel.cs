@@ -28,6 +28,5 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.ViewModels
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
-        
     }
 }

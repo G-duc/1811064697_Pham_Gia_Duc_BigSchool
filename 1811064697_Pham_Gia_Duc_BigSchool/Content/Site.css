@@ -24,12 +24,14 @@ textarea {
 }
 /*Override the default bootstrap Nav bar*/
 .navbar-inverse {
-    background-color: #31708f; 
-    border-color : #fbf6f6;
+    background-color: #31708f;
+    border-color: #31708f;
 }
+ 
 .navbar-inverse .navbar-nav > li > a {
     color: white;
 }
+
 .navbar-inverse .navbar-brand {
     color: white;
 }
@@ -48,8 +50,26 @@ textarea {
     width: 60px;
     border-radius: 9px;
 }
-.course > li .details {
-    position: absolute;
-    top: 0;
-    left: 70px;
+
+
+.course > li > div > .btn-default {
+    color: #eeeeee;
+    background-color: #31708f;
+    border-radius: 7px;
+}
+
+#btnSaveCreate {
+    color: white;
+    background-color: #31708f;
+    border-color: #31708f;
+}
+    #btnSaveCreate:hover {
+        background-color: #034b6e;
+        border-color: #31708f;
+    }
+
+.course li {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
 }
