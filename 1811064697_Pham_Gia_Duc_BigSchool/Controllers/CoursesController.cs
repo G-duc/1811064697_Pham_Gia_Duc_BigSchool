@@ -66,5 +66,30 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Controllers
             };
             return View(viewModel);
         }
+
+        [Authorize]
+        public ActionResult Following()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var followees = _dbContext.Followings.Where(c => c.FollowerId == userId)
+                .Include(i => i.Followee)
+                .ToList();
+            return View(followees);
+        }
+
+
+        [Authorize]
+        public ActionResult Mine()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var courses = _dbContext.Courses
+                .Where(c => c.LecturerId == userId && c.DateTime > DateTime.Now)
+                .Include(l => l.Lecturer)
+                .Include(c => c.Category)
+                .ToList();
+            return View(courses);
+        }
     }
 }
