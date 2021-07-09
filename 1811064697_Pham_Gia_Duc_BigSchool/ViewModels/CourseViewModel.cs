@@ -10,6 +10,7 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.ViewModels
     public class CourseViewModel
     {
         public int Id { get; set; }
+
         [Required]
         public string Place { get; set; }
 
