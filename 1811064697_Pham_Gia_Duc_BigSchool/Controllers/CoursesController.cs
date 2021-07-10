@@ -73,11 +73,14 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Controllers
         {
             var userId = User.Identity.GetUserId();
 
-            var courses = _dbContext.Followings
-                .Where(c => c.FollowerId == userId)
-                .Include(i => i.Followee)
+            var follow = _dbContext.Followings
+                .Where(a => a.FollowerId == userId)
+                .Select(a => a.Followee)
+                //.Include(l => l.Lecturer)
+                //.Include(l => l.Category)
                 .ToList();
-            return View(courses);
+
+            return View(follow);
         }
 
 
