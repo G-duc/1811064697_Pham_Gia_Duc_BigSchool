@@ -70,18 +70,8 @@ textarea {
     }
 
 #btnFollow {
-    padding: 0px 7px;
-    border-radius: 4px;
-    background-color: white;
-    color: #31708f;
-    border-color: white;
-    margin-left: 2px;
-}*/
-    #btnFollow:hover {
-        color: white;
-        background-color: #31708f;
-        transition: 1s all ease;
-    }
+    color: cadetblue;
+}
 
 #btnSaveCreate {
     color: white;

@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+@using Microsoft.AspNet.Identity
 <br />
 <div class="row">
   <ul class="course">
@@ -18,20 +18,37 @@
                 </div>
             </div>
             <div class="details">
-                    <span class="lecturer">
-                        @course.Lecturer.Name
-                        @if (Model.ShowAction)
+                <span class="lecturer">
+                    @course.Lecturer.Name
+                    @if (Model.ShowAction)
+                    {
+                        if (Model.CheckFollowing(course.LecturerId, User.Identity.GetUserId()))
                         {
-                            <button class="btn btn-default btn-sm js-toggle-follow" id="btnFollow" data-user-id="@course.LecturerId">Follow</button>
+                            <button data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">Following</button>
                         }
-                    </span>
+                        else
+                        {
+                            <button  data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">Follow</button>
+
+                        }
+
+                    }
+                </span>
                     <br />
                     <span class="category">
                         @course.Category.Name
                     </span>
                     @if (Model.ShowAction)
                     {
-                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                        if(Model.CheckAttending(course.Id, User.Identity.GetUserId()))
+                        {
+                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going</button>
+                        }
+                        else
+                        {
+                         <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                        }
+                        
                     }
             </div>
         </li>
