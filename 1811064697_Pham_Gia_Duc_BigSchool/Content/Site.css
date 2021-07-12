@@ -76,12 +76,12 @@ textarea {
     color: #31708f;
     border-color: white;
     margin-left: 2px;
-}
+}*/
     #btnFollow:hover {
         color: white;
         background-color: #31708f;
         transition: 1s all ease;
-    }*/
+    }
 
 #btnSaveCreate {
     color: white;
