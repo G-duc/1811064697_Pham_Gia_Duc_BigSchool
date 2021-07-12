@@ -3,12 +3,12 @@
     ViewBag.Title = "Home Page";
 }
 @using Microsoft.AspNet.Identity
+<h2>Home</h2>
 <br />
-<div class="row">
-  <ul class="course">
-     @foreach (var course in Model.UpcommingCourses)
-      {
-          <li>
+<ul class="course">
+    @foreach (var course in Model.UpcommingCourses)
+    {
+        <li>
             <div class="date">
                 <div class="month">
                     @course.DateTime.ToString("MM")
@@ -24,42 +24,72 @@
                     {
                         if (Model.CheckFollowing(course.LecturerId, User.Identity.GetUserId()))
                         {
-                            <button data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">Following</button>
+                            <button id="btnFollowing" data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-un-follow">Following</button>
                         }
                         else
                         {
-                            <button  data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">Follow</button>
+                            <button  id="btnFollow" data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">Follow</button>
 
                         }
 
                     }
                 </span>
-                    <br />
-                    <span class="category">
-                        @course.Category.Name
-                    </span>
-                    @if (Model.ShowAction)
+                <br />
+                <span class="category">
+                    @course.Category.Name
+                </span>
+                @if (Model.ShowAction)
+                {
+                    if (Model.CheckAttending(course.Id, User.Identity.GetUserId()))
                     {
-                        if(Model.CheckAttending(course.Id, User.Identity.GetUserId()))
-                        {
-                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going</button>
-                        }
-                        else
-                        {
-                         <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-                        }
-                        
+                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-un-attendance">Going</button>
                     }
+                    else
+                    {
+                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going ?</button>
+                    }
+
+                }
             </div>
         </li>
-      }
-   </ul>
-    @section scripts
-    {
-        <script>
-            $(document).ready(function () {
-                $(".js-toggle-attendance").click(function (e) {
-                    var button = $(e.target);
+    }
+</ul>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                if (button.hasClass("btn-link")) {
+                    $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                        .done(function () {
+                            button.text("Following");
+                        })
+                        .fail(function () {
+                            alert("Something failed !");
+                        });
+                } else {
+                    $.ajax({
+                        url: "/api/followings/" + button.attr("data-user-id"),
+                        method: "DELETE"
+                    })
+                        .done(function () {
+                            button
+                                .removeClass("btn-link")
+                                .addClass("btn-link")
+                                .text("Follow");
+                        })
+                        .fail(function () {
+                            alert("Something failed !");
+                        });
+                }
+            });
+
+
+
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                if (button.hasClass("btn-default")) {
                     $.post("/api/attendances", { courseId: button.attr("data-course-id") })
                         .done(function () {
                             button
@@ -68,20 +98,26 @@
                                 .text("Going");
                         })
                         .fail(function () {
-                            alert("Somthing failed !");
+                            alert("Something failed !");
                         });
-                });
-                $(".js-toggle-follow").click(function (e) {
-                    var button = $(e.target);
-                    $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                } else {
+                    $.ajax({
+                        url: "/api/attendances/" + button.attr("data-course-id"),
+                        method: "DELETE"
+                    })
                         .done(function () {
-                            button.text("Following");
+                            button
+                                .removeClass("btn-info")
+                                .addClass("btn-default")
+                                .text("Going ?");
                         })
                         .fail(function () {
                             alert("Somthing failed !");
                         });
-                });
-            }); 
-        </script>
-    }
-</div>
+                }
+            });
+
+    });
+
+    </script>
+}

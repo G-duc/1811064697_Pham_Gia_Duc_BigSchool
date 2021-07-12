@@ -3,12 +3,13 @@
     ViewBag.Title = "Attending";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using Microsoft.AspNet.Identity
 
 <h2>Attending</h2>
 
 <ul class="course">
     @foreach (var course in Model.UpcommingCourses)
-    { 
+    {
         <li>
             <div class="date">
                 <div class="month">
@@ -27,17 +28,25 @@
                     }
                     @if (Model.ShowAction && !course.IsCanceled)
                     {
-                        <button class="btn btn-link btn-sm js-toggle-follow" id="btnFollow" data-user-id="@course.LecturerId">Follow</button>
+                        if (Model.CheckFollowing(course.LecturerId, User.Identity.GetUserId()))
+                        {
+                            <button id="btnFollowing" data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-un-follow">Following</button>
+                        }
+                        else
+                        {
+                            <button id="btnFollow" data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">Follow</button>
+
+                        }
                     }
                 </span>
                 <br />
                 <span class="category">
                     @course.Category.Name
                 </span>
-                @if (Model.ShowAction && !course.IsCanceled)
-                {
-                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-                }
+                @*@if (Model.ShowAction && !course.IsCanceled)
+                    {
+                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                    }*@
             </div>
         </li>
     }
