@@ -42,7 +42,7 @@
                 {
                     if (Model.CheckAttending(course.Id, User.Identity.GetUserId()))
                     {
-                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-un-attendance">Going</button>
+                        <button data-course-id="@course.Id" class="btn btn-info btn-sm js-toggle-un-attendance">Going</button>
                     }
                     else
                     {
@@ -58,66 +58,67 @@
 {
     <script>
         $(document).ready(function () {
+           // CoursesController.init();
+
             $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
-                if (button.hasClass("btn-link")) {
-                    $.post("/api/followings", { followeeId: button.attr("data-user-id") })
-                        .done(function () {
-                            button.text("Following");
-                        })
-                        .fail(function () {
-                            alert("Something failed !");
-                        });
-                } else {
-                    $.ajax({
-                        url: "/api/followings/" + button.attr("data-user-id"),
-                        method: "DELETE"
+                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button.text("Following");
                     })
-                        .done(function () {
-                            button
-                                .removeClass("btn-link")
-                                .addClass("btn-link")
-                                .text("Follow");
-                        })
-                        .fail(function () {
-                            alert("Something failed !");
-                        });
-                }
+                    .fail(function () {
+                        alert("Bạn đã theo dõi !");
+                    });
             });
-
-
 
             $(".js-toggle-attendance").click(function (e) {
                 var button = $(e.target);
-                if (button.hasClass("btn-default")) {
-                    $.post("/api/attendances", { courseId: button.attr("data-course-id") })
-                        .done(function () {
-                            button
-                                .removeClass("btn-default")
-                                .addClass("btn-info")
-                                .text("Going");
-                        })
-                        .fail(function () {
-                            alert("Something failed !");
-                        });
-                } else {
-                    $.ajax({
-                        url: "/api/attendances/" + button.attr("data-course-id"),
-                        method: "DELETE"
+                $.post("/api/attendances", { courseId: button.attr("data-course-id") })
+                    .done(function () {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Going");
                     })
-                        .done(function () {
-                            button
-                                .removeClass("btn-info")
-                                .addClass("btn-default")
-                                .text("Going ?");
-                        })
-                        .fail(function () {
-                            alert("Somthing failed !");
-                        });
-                }
+                    .fail(function () {
+                        alert("Something failed !");
+                    });
             });
 
-    });
+
+
+
+            $(".js-toggle-un-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/unfollow", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button
+                            .text("Follow");
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+            });
+
+            //Hủy tham gia
+            $(".js-toggle-un-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/unattend", { courseId: button.attr("data-course-id") })
+                    .done(function () {
+                        button
+                            .removeClass("btn-info")
+                            .addClass("btn-default")
+                            .text("Going ?");
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+            });
+        });
+       
+        // Hủy theo dõi
+      
+      
 
     </script>
 }
