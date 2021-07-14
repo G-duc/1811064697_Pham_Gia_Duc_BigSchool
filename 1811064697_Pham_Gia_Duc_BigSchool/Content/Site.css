@@ -58,18 +58,28 @@ textarea {
     margin-left : 1px;
 }
 
-.course > li > div > .btn-default {
-    color: #eeeeee;
-    background-color: #31708f;
-    border-radius: 7px;
-    padding: 0px 7px;
-}
+    .course > li > div > .btn-default {
+        color: #eeeeee;
+        background-color: #31708f;
+        border-color: #31708f;
+        border-radius: 7px;
+        padding: 0px 7px;
+    }
     .course > li > div > .btn-default:hover {
         color: black;
         background-color: white;
     }
 
 
+    .course > li > .action {
+        display: none;
+        left: 70px;
+        position: absolute;
+    }
+
+    .course > li:hover .action {
+        display: block;
+    }
 
 #btnSaveCreate {
     color: white;
@@ -80,13 +90,8 @@ textarea {
         background-color: #034b6e;
         border-color: #31708f;
     }
-
-.course > li > .action{
-   display: none;
-   left: 70px;
-   position: absolute;
-}
-    .course > li:hover .action{
-        display: block;
-    }
+/*
+#btnGoing {
+    background-color: cadetblue;
+}*/
 

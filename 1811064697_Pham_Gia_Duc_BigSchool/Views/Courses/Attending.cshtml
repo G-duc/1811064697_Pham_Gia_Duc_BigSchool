@@ -26,28 +26,53 @@
                     {
                         <span class="label label-warning">Canceled</span>
                     }
-                    @if (Model.ShowAction && !course.IsCanceled)
+                    @if (Model.ShowAction && !course.IsCanceled && Model.CheckFollowing(course.LecturerId, User.Identity.GetUserId()))
                     {
-                        if (Model.CheckFollowing(course.LecturerId, User.Identity.GetUserId()))
-                        {
-                            <button id="btnFollowing" data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-un-follow">Following</button>
-                        }
-                        else
-                        {
-                            <button id="btnFollow" data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">Follow</button>
+                        <button id="btnFollowing" data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-un-follow">Following</button>
+                    }
+                    else
+                    {
+                        <button id="btnFollow" data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">Follow</button>
 
-                        }
                     }
                 </span>
                 <br />
                 <span class="category">
                     @course.Category.Name
                 </span>
-                @*@if (Model.ShowAction && !course.IsCanceled)
-                    {
-                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-                    }*@
             </div>
         </li>
     }
 </ul>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            // CoursesController.init();
+
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button
+                            .text("Following");
+                    })
+                    .fail(function () {
+                        alert("Something failed !");
+                    });
+            });
+
+            $(".js-toggle-un-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/unfollow", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button
+                            .text("Follow");
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+            });
+    </script>
+}
