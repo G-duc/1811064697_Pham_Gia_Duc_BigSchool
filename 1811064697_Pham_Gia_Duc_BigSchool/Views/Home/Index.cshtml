@@ -58,7 +58,6 @@
 {
     <script>
         $(document).ready(function () {
-           // CoursesController.init();
 
             $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
@@ -88,10 +87,10 @@
 
 
 
-
+            //Hủy theo dõi
             $(".js-toggle-un-follow").click(function (e) {
                 var button = $(e.target);
-                $.post("/api/unfollow", { followeeId: button.attr("data-user-id") })
+                $.post("/api/unfollowing", { followeeId: button.attr("data-user-id") })
                     .done(function () {
                         button
                             .text("Follow");
@@ -104,7 +103,7 @@
             //Hủy tham gia
             $(".js-toggle-un-attendance").click(function (e) {
                 var button = $(e.target);
-                $.post("/api/unattend", { courseId: button.attr("data-course-id") })
+                $.post("/api/unattending", { courseId: button.attr("data-course-id") })
                     .done(function () {
                         button
                             .removeClass("btn-info")
@@ -116,11 +115,6 @@
                         alert("Something failed!");
                     });
             });
-        });
-       
-        // Hủy theo dõi
-      
-      
-
+        });      
     </script>
 }

@@ -184,8 +184,8 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\UnAttendController.cs" />
-    <Compile Include="Controllers\UnFollowController.cs" />
+    <Compile Include="Controllers\UnAttendingController.cs" />
+    <Compile Include="Controllers\UnFollowingController.cs" />
     <Compile Include="DTOs\AttendanceDto.cs" />
     <Compile Include="DTOs\FollowingDto.cs" />
     <Compile Include="Global.asax.cs">

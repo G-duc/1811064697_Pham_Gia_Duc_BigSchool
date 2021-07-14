@@ -10,34 +10,33 @@ using System.Web.Http;
 
 namespace _1811064697_Pham_Gia_Duc_BigSchool.Controllers
 {
-    public class UnFollowController : ApiController
+    public class UnAttendingController : ApiController
     {
         private ApplicationDbContext _dbContext;
-
-        public UnFollowController()
+        public UnAttendingController()
         {
             _dbContext = new ApplicationDbContext();
         }
 
         [Authorize]
         [HttpPost]
-        public IHttpActionResult UnFollow(FollowingDto followDto)
+        public IHttpActionResult Unatteding(AttendanceDto attendanceDto)
         {
             var userId = User.Identity.GetUserId();
 
-            var DelFollowing = _dbContext
-                .Followings
-                .FirstOrDefault(a => a.FollowerId == userId && a.FolloweeId == followDto.FolloweeId);
+            var DelAttend = _dbContext.Attendances
+                .FirstOrDefault(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId);
 
-            if (DelFollowing == null)
+            if(DelAttend == null)
             {
-                return BadRequest("The Follow  is not exists!");
+                return BadRequest("The Attendance does not exsists !");
             }
-            _dbContext.Followings.Remove(DelFollowing);
+            _dbContext.Attendances.Remove(DelAttend);
             _dbContext.SaveChanges();
 
             return Ok();
+
         }
+
     }
 }
-
