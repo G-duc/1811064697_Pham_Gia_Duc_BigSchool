@@ -184,6 +184,7 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UnAttendingController.cs" />
     <Compile Include="Controllers\UnFollowingController.cs" />
     <Compile Include="DTOs\AttendanceDto.cs" />
@@ -301,6 +302,7 @@
     <Content Include="Views\Courses\Attending.cshtml" />
     <Content Include="Views\Courses\Mine.cshtml" />
     <Content Include="Views\Courses\Following.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

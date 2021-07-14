@@ -9,6 +9,7 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.ViewModels
 {
     public class CoursesViewModel
     {
+        public string dataSearch { get; set; }
         public IEnumerable<Course> UpcommingCourses { get; set; }
         public bool ShowAction { get; set; }
 
