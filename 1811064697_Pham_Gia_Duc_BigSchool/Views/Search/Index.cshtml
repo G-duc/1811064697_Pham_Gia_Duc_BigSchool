@@ -5,12 +5,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Kết quả :</h2>
-
-<h4>Search Lecture:</h4>
+<h4>Search</h4>
 <form class="input-group w-50 float-right" action="/Search" method="get">
-    <input type="text" class="form-control" placeholder="Enter Lacture" name="search" value="@Model.dataSearch" />
+    <input type="text" class="form-control" placeholder="Category or Lecturer Name" name="search" value="@Model.dataSearch" />
+
     <div class="input-group-append">
         <button type="submit">Search</button>
     </div>

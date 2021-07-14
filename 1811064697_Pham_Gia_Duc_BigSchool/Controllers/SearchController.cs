@@ -27,9 +27,11 @@ namespace _1811064697_Pham_Gia_Duc_BigSchool.Controllers
                 .Include(s => s.Lecturer)
                 .Include(s => s.Category)
                 .Where(s =>
-                s.Lecturer.Name.Contains(search) &&
+                s.Lecturer.Name.Contains(search) ||
+                s.Category.Name.Contains(search) &&
                 s.DateTime > DateTime.Now &&
                 s.IsCanceled == false);
+
             var viewModel = new CoursesViewModel
             {
                 UpcommingCourses = upcommingCourses,
