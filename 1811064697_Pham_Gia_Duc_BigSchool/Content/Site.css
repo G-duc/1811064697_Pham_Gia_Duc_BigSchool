@@ -95,3 +95,14 @@ textarea {
     background-color: cadetblue;
 }*/
 
+#btnSearch {
+    color: white;
+    background-color: #31708f;
+    border-color: #31708f;
+}
+
+    #btnSearch :hover {
+        color: #31708f;
+        background-color: white;
+        border-color: #31708f;
+    }
